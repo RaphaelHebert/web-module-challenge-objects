@@ -162,7 +162,7 @@ Use the getReviewsByRating function below to do the following:
 */
 
  function getReviewByRating(array1, rating) {
-   return array1.filter(x => x.rating === rating)
+   return array1.filter(x => x.rating <= rating + .9 && x.rating >= rating)
   }
 
   
@@ -201,11 +201,15 @@ Use the carMaker function below to do the following:
   It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
 */
 
-
-function carMaker(/* code here */) {
-    /* code here */
-    
-}
+function carMaker(odometer) {
+  return {
+    odometer: odometer,
+    drive: function (distance) {
+      this.odometer = this.odometer + distance;
+      return this.odometer
+      }
+    }
+  }   
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
