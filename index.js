@@ -15,8 +15,12 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+  return {
+    'name': name,
+    'price': price,
+    'category': category,
+  }
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -29,6 +33,9 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
+console.log(createMenuItem('latte', 3.45, 'coffee'));
+console.log(createMenuItem('expresso', 2.10, 'coffee'));
+console.log(createMenuItem('earl grey', 3.20, 'tea'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -48,10 +55,18 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(string1) {
+    if (string1 === 'teacher' || string1 === 'student') {
+      return this.price * 0.75;
+    }
+    else if (string1 === 'public'){
+      return this.price * 0.90;
+    }
+    else {return this.price}
+  }
 }
 
-
+console.log(burger.discount('teacher'))
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -70,7 +85,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
+console.log(reviews[5].feedback)
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -79,6 +94,8 @@ Using the reviews array above do the following: (no function needed)
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+reviews.push({name: "Joe", rating: 1.5, feedback: "not worth a cent"})
+console.log(reviews)
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -87,8 +104,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   2. log the reviews array to the console to check your work
 */
 
-
-
+reviews[reviews.length - 2].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews)
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -102,8 +119,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array1, index) {
+  return (`${array1[index].name} gave the restaurant a ${array1[index].rating} star review, and their feedback was: ${array1[index].feedback}`);
 }
 
 
@@ -121,10 +138,11 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array1) {
+  return `${array1[array1.length - 1].name} gave the restaurant a ${array1[array1.length - 1].rating} star review, and their feedback was: ${array1[array1.length - 1].feedback}`
 } 
-
+getLastReview(reviews)
+console.log(getLastReview(reviews))
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
@@ -143,8 +161,8 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(array1, rating) {
+   return array1.filter(x => x.rating <= rating + .9 && x.rating >= rating)
   }
 
   
@@ -161,8 +179,8 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-    /* code here */
+function getLongReviews(array1) {
+    return array1.filter(x => x.feedback.split(' ').length > 15)
   }
   
 
@@ -183,11 +201,15 @@ Use the carMaker function below to do the following:
   It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
 */
 
-
-function carMaker(/* code here */) {
-    /* code here */
-    
-}
+function carMaker(odometer) {
+  return {
+    odometer: odometer,
+    drive: function (distance) {
+      this.odometer = this.odometer + distance;
+      return this.odometer
+      }
+    }
+  }   
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
